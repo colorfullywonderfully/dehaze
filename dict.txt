@@ -1,0 +1,5 @@
+input_path:./data
+net_path:./model_outdoor/netG_epoch_2.pth
+out_path:./result/ ./result1/ ./result2/
+size_number:3
+size:512*512 400*400 200*200
