@@ -1,10 +1,11 @@
-source activate python27
+1. pip install python2/3
 
-python BJTU_dehaze.py --valdata ./hazy --net ./netG_epoch_23.pth
+2  pip install pytorch
 
+3. see dict.txt and build model_outdoor/input/output files 
 
-python BJTU_dehaze.py --valdata ./hazy --net ./model_outdoor180000/netG_epoch_2.pth
+4. download "netG_epoch_2.pth" and put it into model_outdoor (model please connect anthor email 16114225@bjtu.edu.en)
 
+5. python dehaze.py 
 
-室外200/2000的模型去雾效果不好
 
