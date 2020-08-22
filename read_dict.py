@@ -22,7 +22,9 @@ def read_dict():
     file.close()
     
     for key,value in dict_temp.items():
-        if key == 'input_path':
+        if key == 'datasetname':
+            datasetname = value
+        elif key == 'input_path':
             input_path = value
         elif key == 'out_path':
             out_path = value
@@ -31,4 +33,4 @@ def read_dict():
         elif key == 'size':
             size = value
 
-    return input_path, out_path, net_path, size
+    return datasetname, input_path, out_path, net_path, size

@@ -1,4 +1,5 @@
-input_path:./data
+datasetname:list
+input_path:/home/yunpengwu/dehaze/data/3.jpg /home/yunpengwu/dehaze/data/5.jpg
 net_path:./model_outdoor/netG_epoch_2.pth
 out_path:./result/ ./result1/ ./result2/
 size_number:3

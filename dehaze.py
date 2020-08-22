@@ -8,12 +8,15 @@ from torch.autograd import Variable
 from PIL import Image
 import read_dict
 import time
+#input_list = ['/home/yunpengwu/dehaze/data/1.jpg', '/home/yunpengwu/dehaze/data/0.jpg']
 
 class DPR_Dehaze(object):
     def __init__(self):               # load model and  param
-        input_path, out_path, net_path, size = read_dict.read_dict()
-        self.dataset = 'pix2pix2'
-        self.valdata = input_path
+        datasetname, input_path, out_path, net_path, size = read_dict.read_dict()
+        if datasetname == 'list':
+            input_path = input_path.split()
+        self.datasetname = datasetname
+        self.valdata =  input_path
         self.valbatchsize = 1
         self.realsize = 256
         self.cropsize = 256
@@ -42,7 +45,7 @@ class DPR_Dehaze(object):
 
     def getLoader(self):          ## read images
 
-        valloader, ims = getLoader(self.dataset,
+        valloader, ims = getLoader(self.datasetname,
                                    self.valdata,
                                    self.realsize,  # opt.originalSize,
                                    self.cropsize,

@@ -1,6 +1,6 @@
 import torch
-import os 
-import sys
+import os
+from PIL import Image
 
 def create_exp_dir(exp):
   try:
@@ -19,20 +19,18 @@ def weights_init(m):
     m.weight.data.normal_(1.0, 0.02)
     m.bias.data.fill_(0)
 
-
 def getLoader(datasetName, dataroot, originalSize, imageSize, batchSize=64, workers=4,
               mean=(0.5, 0.5, 0.5), std=(0.5, 0.5, 0.5), split='train', shuffle=True, seed=None):
 
   #import pdb; pdb.set_trace()
-  if datasetName == 'pix2pix':
-    from pix2pix import pix2pix as commonDataset
+  if datasetName == 'folder':###########################
+    from pix2pix2 import folder_acquire as commonDataset
     import transform as transforms
-  elif datasetName == 'pix2pix2':###########################
-    from pix2pix2 import pix2pix as commonDataset
+
+  elif datasetName == 'list':
+    from pix2pix2 import list_acquire as commonDataset
     import transform as transforms
-  elif datasetName == 'folder':
-    from folder import ImageFolder as commonDataset
-    import torchvision.transforms as transforms
+
 
   if split == 'train':
     dataset = commonDataset(root=dataroot,
