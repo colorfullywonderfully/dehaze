@@ -5,6 +5,7 @@
 3. see dict.txt and build model_outdoor/input/output files 
     
    you can revise the input of dict.txt:
+
    (1) datasetname:list
        input_path:/home/yunpengwu/dehaze/data/3.jpg /home/yunpengwu/dehaze/data/5.jpg
    
