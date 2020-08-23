@@ -14,15 +14,17 @@ def is_image_file(filename):
   return any(filename.endswith(extension) for extension in IMG_EXTENSIONS)
 
 def make_dataset(dir):
+  dir = dir.split()
   images = []
-  if not os.path.isdir(dir):
-    raise Exception('Check dataroot')
-  for root, _, fnames in sorted(os.walk(dir)):
-    for fname in fnames:
-      if is_image_file(fname):
-        path = os.path.join(dir, fname)
-        item = path
-        images.append(item)
+  #if not os.path.isdir(dir):
+    #raise Exception('Check dataroot')
+  for folder in dir:
+    for root, _, fnames in sorted(os.walk(folder)):
+      for fname in fnames:
+        if is_image_file(fname):
+          path = os.path.join(folder, fname)
+          item = path
+          images.append(item)
   return images
 
 def default_loader(path):
@@ -61,7 +63,7 @@ class folder_acquire(data.Dataset):
 class list_acquire(data.Dataset):
   def __init__(self,root, transform=None, loader=default_loader, seed=None):
 
-    imgs = root
+    imgs = root.split()
     if len(imgs) == 0:
       raise(RuntimeError("Found 0 images in subfolders of: " + root + "\n"
                  "Supported image extensions are: " + ",".join(IMG_EXTENSIONS)))

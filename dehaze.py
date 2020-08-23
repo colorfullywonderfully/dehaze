@@ -13,8 +13,6 @@ import time
 class DPR_Dehaze(object):
     def __init__(self):               # load model and  param
         datasetname, input_path, out_path, net_path, size = read_dict.read_dict()
-        if datasetname == 'list':
-            input_path = input_path.split()
         self.datasetname = datasetname
         self.valdata =  input_path
         self.valbatchsize = 1
